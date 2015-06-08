@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,10 +12,9 @@ namespace SteamBotV2
     {
         static void Main(string[] args)
         {
-
             Login l = new Login();
-            l.doLogin("", "");
-
+			l.doLogin("steamUsername", "steamPassword");
+            l.doLogin("steamUsername", "steamPassword", "gmailAddress", "gmailPassword");
             Console.ReadKey();
         }
     }

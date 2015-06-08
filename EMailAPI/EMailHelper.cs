@@ -12,22 +12,36 @@ using System.Text.RegularExpressions;
 
 namespace SteamBotV2
 {
+    /// <summary>
+    ///     Class to get the steam guard code from gmail.
+    /// </summary>
     public class EMailHandler
     {
         private string user;
         private string password;
+
+        /// <summary>
+        ///     Public Constructor of the class EMailHandler.
+        /// </summary>
+        /// <param name="inpEmail">EMail of the GMail Account.</param>
+        /// <param name="inpPassword">Password of the GMail Account.</param>
         public EMailHandler(string inpEmail, string inpPassword)
         {
             this.user = inpEmail;
             this.password = inpPassword;
         }
+
+        /// <summary>
+        ///     Get the Steam Code.
+        /// </summary>
+        /// <returns>Returns the message of Steam.</returns>
         public string getSteamCode()
         {
             string x = getMessage("pop.gmail.com", 995, true, user, password);
             if (x.Equals("0 _*_")) 
             {
                 //Console.WriteLine("FEHLER");
-                throw new System.InvalidOperationException("EMail ist noch nicht da...");
+                throw new System.InvalidOperationException("EMail is not sent.");
             }
             else
             {
@@ -35,6 +49,15 @@ namespace SteamBotV2
             }
         }
 
+        /// <summary>
+        ///     Get a message from POP-mail.
+        /// </summary>
+        /// <param name="hostname">Hostname.</param>
+        /// <param name="port">Port.</param>
+        /// <param name="useSsl">Is SSL used?</param>
+        /// <param name="username">Username of POP.</param>
+        /// <param name="password">Password of POP.</param>
+        /// <returns></returns>
         public static string getMessage(string hostname, int port, bool useSsl, string username, string password)
         {
             // The client disconnects from the server when being disposed
@@ -59,6 +82,10 @@ namespace SteamBotV2
             }
         }
 
+        /// <summary>
+        ///     Get the exact five-digit Steam Guard Code.
+        /// </summary>
+        /// <returns>A String of the Steam Guard Code.</returns>
         public string getGuardText()
         {
             string s = string.Empty;
@@ -80,27 +107,6 @@ namespace SteamBotV2
 
             }
             return Guard;
-
-            
-            /*
-            int number = 0;
-
-            foreach (string line in lines)
-            {
-                number += 1;
-            }
-            string neu = lines[16];
-
-
-            number = 0;
-            string[] words = neu.Split(' ');
-            foreach (string word in words)
-            {
-                number += 1;
-            }
-
-            string Guard = words[8];
-            return Guard;*/
         }
     }
 }

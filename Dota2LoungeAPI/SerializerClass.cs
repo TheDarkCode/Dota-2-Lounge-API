@@ -6,23 +6,28 @@ using System.Threading.Tasks;
 
 namespace SteamBotV2.Dota2LoungeAPI
 {
+    /// <summary>
+    ///     Serializer Class, which will include all Objects of responses which can be parsed.
+    /// </summary>
     public class SerializerClass
     {
     }
 
+    /// <summary>
+    ///     RSAKey Object.
+    /// </summary>
     public class GetRsaKey
     {
         public bool success { get; set; }
-
         public string publickey_mod { get; set; }
-
         public string publickey_exp { get; set; }
-
         public string timestamp { get; set; }
-
         public string steamid { get; set; }
     }
 
+    /// <summary>
+    ///     DoLogin Object.
+    /// </summary>
     public class DoLoginRootObject
     {
         public bool success { get; set; }
@@ -32,6 +37,9 @@ namespace SteamBotV2.Dota2LoungeAPI
         public TransferParameters transfer_parameters { get; set; }
     }
 
+    /// <summary>
+    ///     Transferparameters.
+    /// </summary>
     public class TransferParameters
     {
         public string steamid { get; set; }

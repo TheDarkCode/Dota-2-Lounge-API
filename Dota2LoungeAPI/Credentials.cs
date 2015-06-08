@@ -2,6 +2,9 @@
 
 namespace SteamBotV2.Dota2LoungeAPI
 {
+    /// <summary>
+    ///     Class to save the parameters of the login.
+    /// </summary>
     public class Credentials
     {
         public string _action;
